@@ -1,23 +1,23 @@
 #!/bin/bash
 
 # Load Docker image versions from external file
-if [ -f docker_images.env ]; then
-  source docker_images.env
+if [ -f config/docker_images.env ]; then
+  source config/docker_images.env
 else
-  echo "Error: docker_images.env file not found!"
+  echo "Error: config/docker_images.env file not found!"
   exit 1
 fi
 
 # Load database credentials from external file
-if [ -f db_credentials.env ]; then
-  source db_credentials.env
+if [ -f config/db_credentials.env ]; then
+  source config/db_credentials.env
 else
-  echo "Error: db_credentials.env file not found!"
+  echo "Error: config/db_credentials.env file not found!"
   exit 1
 fi
 
 # Call the script to create Docker network and volume
-if ! ./docker_resources_setup.sh; then
+if ! ./scripts/docker_resources_setup.sh; then
   exit 1
 fi
 
@@ -59,7 +59,7 @@ until check_postgres_ready; do
 done
 
 # Call the script to initialize the database:
-if ! ./db_setup.sh; then
+if ! ./scripts/db_setup.sh; then
   exit 1
 fi
 
