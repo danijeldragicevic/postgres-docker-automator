@@ -17,13 +17,13 @@ Docker version 27.2.0, build 3ab4256
 
 Navigate to the root directory of the project and execute following to give the necessary permission for the scripts:
 ```
-$ chmod +x *.sh
+$ chmod +x scripts/*.sh
 ```
 <br>
 
 To create PostgresSQL and Adminer containers run the following script:
 ```
-$ ./run_containers.sh
+$ ./scripts/run_containers.sh
 ```
 <br>
 
@@ -87,7 +87,7 @@ Database: hyper-db
 
 To stop and remove the containers, network, and volume from your system run the following script:
 ```
-$ ./cleanup.sh
+$ ./scripts/cleanup.sh
 ```
 <br>
 
